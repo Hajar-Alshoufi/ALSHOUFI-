@@ -32,9 +32,20 @@ for i in range(nume):
     plac = str(input(f'Insert the meaurement place on the map{[i+1]}:'))
     Area.append(plac)
 epi_depth = str(input('Insert the epilimnion depth:'))
+if '.' not in epi_depth:
+    epi_depth = '%s,0'%epi_depth
+else:
+    epi_depth = np.array(list(epi_depth))
+    epi_depth = np.where(epi_depth == '.', ',', epi_depth) 
+    epi_depth = ''.join(epi_depth)
 hypo_depth = str(input('Insert the hypolimnion depth:'))
-epi_depth = '%s,0'%epi_depth
-hypo_depth = '%s,0'%hypo_depth
+hypo_depth = str(input('Insert the hypolimnion depth: ')) 
+if '.' not in hypo_depth:
+    hypo_depth = '%s,0'%hypo_depth
+else:
+    hypo_depth = np.array(list(hypo_depth))
+    hypo_depth = np.where(hypo_depth == '.', ',', hypo_depth) 
+    hypo_depth = ''.join(hypo_depth)
 column = ['Paikan nimi', 'Paikan ID-numero', 'Paikan ETRS-koord itä', 'Paikan ETRS-koord pohj',	'Paikan syvyys (m)', 'Näytteenottoaika', 'Näytesyvyys',	'Määrityskoodi', 'Suure(suomeksi)', 'Lippu', 'Alkuperäinen arvo', 'Yksikkö', 'Tulos']
 col = ['Paikan nimi', 'Näytteenottoaika', 'Näytesyvyys', 'Suure(suomeksi)', 'Tulos']
 index = [chr(i) for i in range(ord(rangee[0]), ord(rangee[-1])+1)]
